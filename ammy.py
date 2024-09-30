@@ -49,3 +49,13 @@ if __name__ == "__main__":
         setup_syslog_listener()
     except KeyboardInterrupt:
         print("Shutting down syslog listener.")
+
+
+# --------------------------------------
+
+Syslog
+| where Computer == "VM1" or Computer == "VM2"
+| where Facility == "auth" or Facility == "daemon" // Optional: Filter by syslog facility types
+| order by TimeGenerated desc
+| take 10
+
